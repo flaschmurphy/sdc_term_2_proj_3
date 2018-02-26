@@ -1,0 +1,9 @@
+*.un~
+*.swp
+*.swo
+*.o
+__pycache__
+build
+.idea/
+cmake-build-debug/
+
