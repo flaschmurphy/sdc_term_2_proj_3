@@ -57,15 +57,15 @@ int main()
 
             auto s = hasData(std::string(data));
             if (s != "") {
-                /* ["telemetry",{"sense_x":"5.8186","sense_y":"2.1703","sense_theta":"0.0064",
-                 * "previous_velocity":"3.9611","previous_yawrate":"3.0937",
-                 * "sense_observations_x":"2.7014 10.9343 -19.9341 1.6932 
-                 * 13.7923 29.8533 -13.7763 30.0919 -35.7014 22.1392 -46.4918 ",
-                 * "sense_observations_y":"6.0448 -6.6099 -1.9763 -22.6177 -22.6092 
+                /* json data sample:
+                 *
+                 *     ["telemetry",{"sense_x":"5.8186","sense_y":"2.1703","sense_theta":"0.0064",
+                 *     "previous_velocity":"3.9611","previous_yawrate":"3.0937",
+                 *     "sense_observations_x":"2.7014 10.9343 -19.9341 1.6932
+                 *     13.7923 29.8533 -13.7763 30.0919 -35.7014 22.1392 -46.4918 ",
+                 * "sense_observations_y":"6.0448 -6.6099 -1.9763 -22.6177 -22.6092
                  * 12.8065 -36.1885 -31.1534 -25.1671 -41.4695 -14.3708 "}]
                  */
-                std::cout << s << std::endl;
-
                 auto j = json::parse(s);
                 std::string event = j[0].get<std::string>();
 
@@ -131,6 +131,8 @@ int main()
                     }
                     cout << "highest w " << highest_weight << endl;
                     cout << "average w " << weight_sum/num_particles << endl;
+                    cout << "best x " << best_particle.x << endl;
+                    cout << "best y " << best_particle.y << endl;
 
                     json msgJson;
                     msgJson["best_particle_x"] = best_particle.x;
